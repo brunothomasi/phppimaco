@@ -2,6 +2,8 @@
 
 [![License](https://poser.pugx.org/proner/phppimaco/license.svg)](https://packagist.org/packages/proner/phppimaco)
 
+Este pacote é um fork do pacote <a href="https://github.com/PronerInformatica/phppimaco" target="_blank">PronerInformatica/phppimaco</a> onde ele é compatível com PHP 8 e haverá mais tipos de etiquetas configuradas.
+
 O PHP PIMACO é um pacote para geração de etiquetas usando a biblioteca <a href="https://github.com/mpdf/mpdf" target="_blank">MPDF</a> para auxiliar a montagem de PDFs com as tuas etiquetas devidamente formatadas e prontas para impressão.
 
 ## Dependência
