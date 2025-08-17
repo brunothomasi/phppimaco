@@ -15,8 +15,11 @@ class Tag
     private $height;
     private $border;
     private $size;
+    private $align;
     private $padding;
     private $marginLeft;
+    private $tags;
+    private $ln;
 
     /**
      * Tag constructor.
@@ -138,10 +141,10 @@ class Tag
     /**
      * @param string $content
      * @param string|null $label
-     * @param string|null $fontSize
+     * @param float|null $fontSize
      * @return QrCode
      */
-    public function qrcode(string $content, string $label = null, string $fontSize = null)
+    public function qrcode(string $content, string $label = null, float $fontSize = null)
     {
         $qrcode = new QrCode($content);
 

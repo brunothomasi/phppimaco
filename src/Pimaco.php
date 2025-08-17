@@ -8,7 +8,7 @@ class Pimaco
 {
     private $path_template;
     private $file_template;
-    private $content;
+    private $pdf;
 
     private $width;
     private $height;
@@ -32,7 +32,7 @@ class Pimaco
      * @param string $tempDir
      * @throws \Exception
      */
-    public function __construct(string $template, string $path_template = null, string $tempDir = null)
+    public function __construct(string $template, string $path_template = '', string $tempDir = '')
     {
         $this->path_template = dirname(__DIR__) . "/templates/";
         if (!empty($path_template)) {
@@ -132,7 +132,6 @@ class Pimaco
 
     public function render()
     {
-        $this->content = "";
 
         $rows = ceil($this->tags->count()/$this->columns);
         $blank = $this->columns*$rows-$this->tags->count();
@@ -161,10 +160,12 @@ class Pimaco
      * @param string|null $dest
      * @throws \Mpdf\MpdfException
      */
-    public function output(string $name = null, string $dest = null)
+    public function output(string $name = '', string $dest = '')
     {
-//        var_dump($this->render());
-//        exit();
+        if(empty($name)) $name = null;
+        
+        if(empty($dest)) $dest = null;
+        
         $this->pdf->WriteHTML($this->render());
         $this->pdf->Output($name, $dest);
     }

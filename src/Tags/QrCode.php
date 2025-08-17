@@ -3,10 +3,12 @@ declare(strict_types = 1);
 namespace Proner\PhpPimaco\Tags;
 
 use Endroid\QrCode\ErrorCorrectionLevel;
+use Endroid\QrCode\Writer\PngWriter;
+use Endroid\QrCode\Encoding\Encoding;
 
 class QrCode
 {
-    private $size;
+    private int $size;
     private $label;
     private $labelFontSize;
     private $padding;
@@ -31,10 +33,10 @@ class QrCode
     }
 
     /**
-     * @param float $size
+     * @param int $size
      * @return $this
      */
-    public function setSize(float $size)
+    public function setSize(int $size)
     {
         $this->size = $size;
         return $this;
@@ -106,13 +108,7 @@ class QrCode
      */
     public function render()
     {
-        $qrcode = new \Endroid\QrCode\QrCode();
-        $qrcode->setErrorCorrectionLevel(ErrorCorrectionLevel::HIGH);
-        $qrcode->setEncoding('UTF-8');
-        $qrcode->setForegroundColor(array('r' => 0, 'g' => 0, 'b' => 0, 'a' => 0));
-        $qrcode->setBackgroundColor(array('r' => 255, 'g' => 255, 'b' => 255, 'a' => 0));
-        $qrcode->setWriterByName('png');
-        $qrcode->setText($this->content);
+        $qrcode = new \Endroid\QrCode\QrCode($this->content, new Encoding('UTF-8'), ErrorCorrectionLevel::High);
 
         if ($this->br === null) {
             if ($this->align == 'left') {
@@ -130,24 +126,15 @@ class QrCode
             $qrcode->setSize($this->size);
         }
 
-        if (!empty($this->label)) {
-            $qrcode->setLabel($this->label);
-        }
-
-        if (!empty($this->labelFontSize)) {
-            $qrcode->setLabelFontSize($this->labelFontSize);
-        }
-
-        if (!empty($this->padding)) {
-            $qrcode->setPadding($this->padding);
-        }
-
         if (!empty($styles)) {
             $style = "style='".implode(";", $styles)."'";
         } else {
             $style = "";
         }
 
-        return "<img ".$style." src='{$qrcode->writeDataUri()}'>".$this->br;
+        $png = new PngWriter();
+        $result = $png->write($qrcode);
+
+        return "<img ".$style." src='{$result->getString()}'>".$this->br;
     }
 }
