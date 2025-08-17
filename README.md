@@ -1,28 +1,18 @@
 # PHP PIMACO
 
-[![Build Status](https://travis-ci.org/mrprompt/phppimaco.svg?branch=master)](https://travis-ci.org/mrprompt/phppimaco)
-[![Latest Stable Version](https://poser.pugx.org/proner/phppimaco/v/stable)](https://packagist.org/packages/proner/phppimaco)
-[![Latest Unstable Version](https://poser.pugx.org/proner/phppimaco/v/unstable)](https://packagist.org/packages/proner/phppimaco)
-[![Total Downloads](https://poser.pugx.org/proner/phppimaco/downloads)](https://packagist.org/packages/proner/phppimaco)
 [![License](https://poser.pugx.org/proner/phppimaco/license.svg)](https://packagist.org/packages/proner/phppimaco)
-[![Code Climate](https://codeclimate.com/github/PronerInformatica/phppimaco/badges/gpa.svg)](https://codeclimate.com/github/PronerInformatica/phppimaco)
 
 O PHP PIMACO é um pacote para geração de etiquetas usando a biblioteca <a href="https://github.com/mpdf/mpdf" target="_blank">MPDF</a> para auxiliar a montagem de PDFs com as tuas etiquetas devidamente formatadas e prontas para impressão.
 
 ## Dependência
 
-- PHP 7.0 ou superior
+- PHP 8.0 ou superior
 
 ## Instalação
 
 Para fazer instalação do PHPPimaco utilize o composer
 ```php
-composer require proner/phppimaco
-```
-
-Caso você precise usar o MPDF na versão 6 use o comando
-```php
-composer require proner/phppimaco:"^1.2"
+composer require brunothomasi/phppimaco
 ```
 
 ## Primeira impressão
