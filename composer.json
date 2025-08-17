@@ -1,5 +1,5 @@
 {
-    "name": "brunothomasi/phppimaco",
+    "name": "brunothomasi/phppimaco-php8",
     "description": "Lib para geração de Etiquetas PIMACO",
     "keywords": ["PIMACO", "etiquetas","tags","hang tags"],
     "license": "MIT",
